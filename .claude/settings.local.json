@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(findstr institution *)",
+      "Bash(grep -E \"\\\\.\\(ts|tsx\\)$\")",
+      "Bash(Get-ChildItem -Path \"c:\\\\1projetosPessoais\\\\medneeds-api\\\\medneeds-api\\\\src\\\\collections\" -Recurse -File -Include \"*.ts\" -o AllFiles)",
+      "Bash(Get-ChildItem -Path \"c:\\\\1projetosPessoais\\\\medneeds-api\\\\medneeds-api\\\\src\\\\endpoints\" -Directory)",
+      "Bash(xargs grep -l \"tradeName\\\\|legalName\")",
+      "Bash(Get-ChildItem -Path \"c:\\\\1projetosPessoais\\\\medneeds-api\\\\medneeds-api\\\\src\\\\endpoints\\\\\" -File | Select-Object Name)",
+      "Bash(Get-ChildItem -Path \"c:\\\\1projetosPessoais\\\\medneeds-api\\\\medneeds-api\" -Force)",
+      "Bash(sed -i 's|navigate\\(\"/institucional/ofertas\"\\)|navigate\\(\"/ofertas\"\\)|g' \"c:\\\\1projetosPessoais\\\\medneeds-portal\\\\src\\\\pages\\\\institution\\\\InstitutionalDashboard.tsx\")",
+      "Bash(powershell -Command \"\\(Get-Content 'c:\\\\1projetosPessoais\\\\medneeds-portal\\\\src\\\\pages\\\\institution\\\\InstitutionalDashboard.tsx'\\) -replace 'navigate\\\\\\(\\\\\"/institucional/ofertas\\\\\"\\\\\\)', 'navigate\\(\\\\\"/ofertas\\\\\"\\)' | Set-Content 'c:\\\\1projetosPessoais\\\\medneeds-portal\\\\src\\\\pages\\\\institution\\\\InstitutionalDashboard.tsx'\")",
+      "Bash(Get-ChildItem -Path \"c:\\\\1projetosPessoais\\\\medneeds-portal\\\\src\" -Recurse -Directory)",
+      "Bash(Sort-Object FullName)",
+      "Bash(Get-ChildItem -Path \"c:\\\\1projetosPessoais\\\\medneeds-api\\\\medneeds-api\" -Recurse -Directory)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(ls -la \"c:\\\\1projetosPessoais\\\\medneeds-api\\\\medneeds-api\\\\\" | head -30)",
+      "Read(//c/1projetosPessoais/medneeds-api/**)",
+      "Bash(Get-ChildItem -Path \"c:\\\\1projetosPessoais\\\\medneeds-api\\\\medneeds-api\\\\src\\\\endpoints\\\\institution-jobs\" -Recurse -File -Name)",
+      "Bash(npm run *)",
+      "Bash(xargs grep -l \"institution-parameters\\\\|institutionParameters\")",
+      "Bash(xargs grep -l \"select-options\")",
+      "Bash(grep -E \"\\\\.\\(tsx?|ts\\)$\")",
+      "Bash(grep -E \"\\\\.ts$\")",
+      "Bash(Get-ChildItem -Path \"c:\\\\1projetosPessoais\\\\medneeds-api\\\\medneeds-api\\\\src\\\\endpoints\\\\kpis\" -Recurse)"
+    ]
+  }
+}

@@ -1,0 +1,289 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  MEDNEEDS DESIGN SYSTEM
+  Clean, modern healthcare platform
+  Navy authority + Lime energy
+*/
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    --card-radius: 1.125rem;
+    --chip-radius: 9999px;
+  }
+}
+
+/* Safe area for mobile devices */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Card variants */
+  .card-base {
+    @apply bg-card rounded-card border border-border;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-elevated {
+    @apply bg-card rounded-card border-0;
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .card-interactive {
+    @apply card-base transition-all duration-200 cursor-pointer;
+  }
+
+  .card-interactive:hover {
+    box-shadow: var(--shadow-elevated);
+    @apply border-accent/30;
+  }
+
+  /* Chip variants */
+  .chip {
+    @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-full;
+  }
+
+  .chip-green {
+    background-color: hsl(var(--chip-green));
+    color: hsl(var(--chip-green-text));
+  }
+
+  .chip-blue {
+    background-color: hsl(var(--chip-blue));
+    color: hsl(var(--chip-blue-text));
+  }
+
+  .chip-purple {
+    background-color: hsl(var(--chip-purple));
+    color: hsl(var(--chip-purple-text));
+  }
+
+  .chip-orange {
+    background-color: hsl(var(--chip-orange));
+    color: hsl(var(--chip-orange-text));
+  }
+
+  .chip-red {
+    background-color: hsl(var(--chip-red));
+    color: hsl(var(--chip-red-text));
+  }
+
+  /* Status badges */
+  .status-badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-full;
+  }
+
+  .status-open {
+    background-color: hsl(var(--lime-muted));
+    color: hsl(var(--lime-dark));
+  }
+
+  .status-confirmed {
+    background-color: hsl(var(--success-container));
+    color: hsl(var(--success-container-foreground));
+  }
+
+  .status-pending {
+    background-color: hsl(var(--status-pending) / 0.1);
+    color: hsl(var(--status-pending));
+  }
+
+  .status-canceled {
+    background-color: hsl(var(--destructive-container));
+    color: hsl(var(--destructive-container-foreground));
+  }
+
+  /* Button variants for hero/CTA */
+  .btn-lime {
+    @apply bg-accent text-accent-foreground font-semibold;
+    @apply hover:bg-accent/90 transition-colors;
+  }
+
+  .btn-navy {
+    @apply bg-primary text-primary-foreground font-semibold;
+    @apply hover:bg-primary/90 transition-colors;
+  }
+
+  .btn-ghost-navy {
+    @apply text-primary hover:bg-primary/5 font-medium;
+  }
+
+  /* Topbar */
+  .topbar {
+    @apply h-16 bg-primary text-primary-foreground px-6 flex items-center justify-between;
+    @apply sticky top-0 z-40;
+  }
+
+  /* Page container */
+  .page-container {
+    @apply p-6 max-w-7xl mx-auto bg-background text-foreground;
+  }
+
+  .page-header {
+    @apply mb-8;
+  }
+
+  .page-title {
+    @apply text-2xl font-bold text-foreground;
+  }
+
+  .page-subtitle {
+    @apply text-muted-foreground mt-1;
+  }
+
+  /* Grid layouts */
+  .grid-cards {
+    @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+
+  .grid-stats {
+    @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-4;
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.3s ease-out;
+  }
+
+  /* Dynamic Hover Effects */
+  .hover-dynamic {
+    @apply transition-[filter] duration-200 hover:brightness-95 dark:hover:brightness-125;
+  }
+
+  .hover-surface {
+    @apply hover-dynamic;
+  }
+
+  .hover-accent-subtle {
+    @apply hover-dynamic;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Calendar day indicators */
+.calendar-day-indicator {
+  @apply w-1.5 h-1.5 rounded-full;
+}
+
+/* Hide scrollbar for mobile horizontal scrolls */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mobile safe area support */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0);
+}
+
+/* Touch-friendly tap targets */
+@media (hover: none) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Mobile form inputs - larger touch targets */
+@media (max-width: 768px) {
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/40;
+}
