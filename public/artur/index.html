@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#07111f" />
+  <title>Artur Batista — Projetos para a prática médica</title>
+  <meta name="description" content="Conheça MedNeeds, MedStation, Arsen e Arsenal Med — projetos criados para organizar, apoiar e tornar a prática médica mais fluida." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Artur Batista — Projetos para a prática médica" />
+  <meta property="og:description" content="Tecnologia, gestão e conteúdo para uma prática médica mais organizada." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/medneeds/arsenalmed/main/src/assets/artur-batista.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#07111f;
+      --panel:rgba(255,255,255,.055);
+      --panel-hover:rgba(255,255,255,.085);
+      --stroke:rgba(255,255,255,.11);
+      --text:#f5f7fb;
+      --muted:#aeb8c8;
+      --soft:#78869a;
+      --white:#fff;
+      --shadow:0 28px 80px rgba(0,0,0,.33);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      color:var(--text);
+      font-family:"Manrope",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%,rgba(46,120,255,.17),transparent 32rem),
+        radial-gradient(circle at 95% 18%,rgba(68,222,180,.10),transparent 28rem),
+        linear-gradient(160deg,#07111f 0%,#0a1422 45%,#07101b 100%);
+      -webkit-font-smoothing:antialiased;
+    }
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.18;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+      mix-blend-mode:soft-light;
+    }
+    a{color:inherit}
+    .shell{width:min(100% - 32px,720px);margin:0 auto;padding:56px 0 42px;position:relative}
+    .profile{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:34px}
+    .avatar-wrap{position:relative;width:116px;height:116px;margin-bottom:18px}
+    .avatar-ring{position:absolute;inset:-5px;border-radius:50%;background:linear-gradient(135deg,rgba(116,167,255,.92),rgba(90,227,189,.72));filter:blur(.2px)}
+    .avatar{position:relative;width:116px;height:116px;border-radius:50%;object-fit:cover;object-position:center 18%;border:3px solid #0b1625;display:block;box-shadow:0 18px 48px rgba(0,0,0,.34)}
+    .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#9fb0c8;margin-bottom:10px}
+    h1{font-size:clamp(30px,6vw,44px);line-height:1.04;margin:0;letter-spacing:-.045em;font-weight:800}
+    .intro{max-width:560px;margin:14px auto 0;color:var(--muted);font-size:15px;line-height:1.65}
+    .section-label{font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--soft);font-weight:700;margin:0 0 12px 4px}
+    .grid{display:grid;gap:12px}
+    .card{
+      --accent:#7ba2ff;
+      text-decoration:none;
+      display:grid;
+      grid-template-columns:54px 1fr auto;
+      align-items:center;
+      gap:15px;
+      min-height:108px;
+      padding:18px;
+      border-radius:22px;
+      border:1px solid var(--stroke);
+      background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.035));
+      box-shadow:0 10px 32px rgba(0,0,0,.12);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease;
+      overflow:hidden;
+      position:relative;
+    }
+    .card:before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:3px;background:var(--accent);opacity:.85}
+    .card:hover{transform:translateY(-2px);background:linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.05));border-color:rgba(255,255,255,.18);box-shadow:var(--shadow)}
+    .card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+    .mark{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-weight:800;font-size:16px;letter-spacing:-.03em;color:#07111f;background:var(--accent);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 8px 24px rgba(0,0,0,.16)}
+    .copy{min-width:0}
+    .title-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px}
+    .name{font-size:17px;font-weight:800;letter-spacing:-.02em}
+    .tag{font-size:10px;line-height:1;padding:5px 7px;border-radius:999px;border:1px solid rgba(255,255,255,.1);color:#b9c3d2;background:rgba(255,255,255,.045);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+    .desc{font-size:13px;line-height:1.52;color:var(--muted);margin:0}
+    .arrow{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.1);color:#dce4ef;background:rgba(255,255,255,.035);font-size:18px;transition:transform .22s ease,background .22s ease}
+    .card:hover .arrow{transform:translateX(2px);background:rgba(255,255,255,.075)}
+    .medneeds{--accent:#caf55f}
+    .medstation{--accent:#6f9cff}
+    .arsen{--accent:#84d7cf}
+    .arsenal{--accent:#d5b584}
+    .note{display:flex;align-items:flex-start;gap:10px;padding:16px 4px 0;color:#7f8ca0;font-size:11px;line-height:1.55}
+    .dot{width:6px;height:6px;border-radius:50%;background:#7f8ca0;margin-top:6px;flex:0 0 auto}
+    footer{text-align:center;margin-top:34px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);color:#708096;font-size:11px;line-height:1.7}
+    .signature{color:#aab6c7;font-weight:700}
+    @media (max-width:520px){
+      .shell{width:min(100% - 24px,720px);padding-top:42px}
+      .profile{margin-bottom:30px}
+      .avatar-wrap,.avatar{width:104px;height:104px}
+      .card{grid-template-columns:48px 1fr auto;gap:12px;padding:15px;border-radius:19px;min-height:102px}
+      .mark{width:48px;height:48px;border-radius:14px;font-size:14px}
+      .name{font-size:16px}
+      .desc{font-size:12.5px}
+      .arrow{width:30px;height:30px}
+    }
+    @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="profile">
+      <div class="avatar-wrap" aria-hidden="true">
+        <div class="avatar-ring"></div>
+        <img class="avatar" src="https://raw.githubusercontent.com/medneeds/arsenalmed/main/src/assets/artur-batista.webp" alt="Artur Batista" />
+      </div>
+      <div class="eyebrow">Medicina · Tecnologia · Gestão</div>
+      <h1>Artur Batista</h1>
+      <p class="intro">Projetos criados para organizar a rotina, apoiar decisões e tornar o trabalho médico mais fluido — da gestão assistencial ao plantão.</p>
+    </header>
+
+    <p class="section-label">Conheça os projetos</p>
+    <section class="grid" aria-label="Projetos de Artur Batista">
+      <a class="card medstation" href="https://medstation-ai.com.br" target="_blank" rel="noopener noreferrer" aria-label="Conhecer MedStation">
+        <div class="mark">MS</div>
+        <div class="copy">
+          <div class="title-row"><span class="name">MedStation</span><span class="tag">IA clínica</span></div>
+          <p class="desc">Documentação clínica, copiloto médico e fluxo de trabalho com inteligência artificial.</p>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+      </a>
+
+      <a class="card medneeds" href="https://medneeds.com.br" target="_blank" rel="noopener noreferrer" aria-label="Conhecer MedNeeds">
+        <div class="mark">MN</div>
+        <div class="copy">
+          <div class="title-row"><span class="name">MedNeeds</span><span class="tag">Rotina médica</span></div>
+          <p class="desc">Gestão de plantões, oportunidades e finanças médicas em um só lugar.</p>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+      </a>
+
+      <a class="card arsen" href="https://github.com/medneeds/arsen" target="_blank" rel="noopener noreferrer" aria-label="Conhecer Arsen">
+        <div class="mark">AR</div>
+        <div class="copy">
+          <div class="title-row"><span class="name">Arsen</span><span class="tag">Gestão assistencial</span></div>
+          <p class="desc">Prontuário eletrônico e gestão assistencial para organizar o cuidado e o fluxo clínico.</p>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+      </a>
+
+      <a class="card arsenal" href="https://arsenalmed.com.br" target="_blank" rel="noopener noreferrer" aria-label="Conhecer Arsenal Med">
+        <div class="mark">AM</div>
+        <div class="copy">
+          <div class="title-row"><span class="name">Arsenal Med</span><span class="tag">Manual digital</span></div>
+          <p class="desc">Manual de plantão organizado por cenários, para consulta rápida quando você mais precisa.</p>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+      </a>
+    </section>
+
+    <div class="note">
+      <span class="dot"></span>
+      <span>Cada projeto resolve uma etapa diferente da prática médica — organização pessoal, produtividade clínica, gestão assistencial e consulta de conteúdo.</span>
+    </div>
+
+    <footer>
+      <span class="signature">Artur Batista</span><br />
+      Projetos independentes, conectados pela prática médica.
+    </footer>
+  </main>
+</body>
+</html>
